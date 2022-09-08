@@ -4,6 +4,10 @@ console.log(document);
 
 let button = document.getElementById('loadButton');
 let content = document.getElementById('container');
+let titleInput = document.getElementById('titleInput');
+let idInput = document.getElementById('idInput');
+let addButton = document.getElementById('addButton');
+addButton.onclick = addPainting;
 button.onclick = loadAllPaintings;
 
 function loadSpan(response){
@@ -27,4 +31,12 @@ function loadAllPaintings(){
             loadSpan(responsejson);
         }
     }
+}
+
+function addPainting() {
+    let request = new XMLHttpRequest();
+    request.open("POST", "http://localhost:9000/paintings");
+    request.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+    let paintingObj = {title:titleInput.value, artistID:idInput.value};
+    request.send(JSON.stringify(paintingObj));
 }

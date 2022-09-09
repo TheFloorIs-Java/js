@@ -39,7 +39,8 @@ async function loadPaintings(response){
         // ul is unordered list (bullet points)
         // li is a list element
         let paintingCard = document.createElement("li");
-        let paintingTitle = document.createElement("p");
+        let paintingTitle = document.createElement("a");
+        paintingTitle.href = "file:///C:/Users/TedBa/Documents/Revature/js2/painting.html"+"#painting="+response[i].title;
         paintingTitle.innerText = response[i].title;
         let artistName = document.createElement("p");
         artistName.innerText = artist.name;
